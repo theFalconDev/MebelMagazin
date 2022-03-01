@@ -1,0 +1,20 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+nav.nav{
+  background-color: #26a69a;
+}
+
+.lnr-frame-expand:before {
+  display: none;}
+
+input:focus {
+  box-shadow: none;
+}
+

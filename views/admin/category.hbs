@@ -1,0 +1,63 @@
+<div class="content-page">
+  <div class="container">
+    <div class="row">
+
+
+
+      {{#if category.length}}
+      {{#each category}}
+      <div class="col-md-3">
+        <div class="single-populer-products">
+          <div class="single-populer-product-img mt40">
+            <img src="{{img}}" alt="populer-products images">
+          </div>
+          <h2><a href="/admin/category/{{id}}">{{name}}</a></h2>
+          <div class="single-populer-products-para">
+            <p>{{des}}</p>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+      {{else}}
+      <p> categories is a empty</p>
+      {{/if}}
+
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <div class="container">
+    <div class="row d-flex justify-content-center" style="display: flex; justify-content: center;">
+
+      <div class="col-lg-4">
+        <form action="/admin/category/add" method="POST">
+          <h2 style="margin-top: 15px !important; margin-bottom: 15px !important">Kategoriya qo'shish</h2>
+
+
+          <div class=" mb-3">
+            <label for="name" class="form-label"> Categoriya </label>
+            <input type="text" style="margin-bottom: 15px !important;" name="name" class="form-control" id="name"
+              placeholder="divan , kreslo">
+          </div>
+
+          <div class="mb-3 ">
+            <label for="img" class="form-label"> Kategoriya rasmi</label>
+            <input type="text" style="margin-bottom: 15px !important;" name="img" class="form-control" id="img"
+              placeholder=" rasm url manzili">
+          </div>
+
+          <div class="mb-3 ">
+            <label for="des" class="form-label"> Kategoriya sharhi</label>
+            <input type="text" style="margin-bottom: 15px !important;" name="des" class="form-control" id="des"
+              placeholder=" kategoriya haqida ...">
+          </div>
+
+          <button class="btn btn-primary" type="submit">Create category</button>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
