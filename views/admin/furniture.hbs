@@ -1,8 +1,36 @@
 <div class="container">
     <div class="row justify-center">
+        {{#each furniture}}
+        <div class="col-md-3 col-sm-4">
+            <div class="single-new-arrival">
+                <div class="single-new-arrival-bg">
+                    <a href="/admin/{{id}}"><img src="{{ img}}" alt="new-arrivals images"></a>
+                    <div class="single-new-arrival-bg-overlay"></div>
+                    {{#if isSale}}
+                    <div class="sale bg-1">
+                        <p>sale</p>
+                    </div>
+                    {{/if}}
+                    <div class="new-arrival-cart">
+                        <button style="boder none , background-color:#33383c " class="btn btn-primary how" ><a href="/admin/{{id}}" style="list">Mebel ko'rish</a></button>
+                        <p>
+                            <span class="lnr lnr-cart"></span>
+                            <a href="#">add <span>to </span> cart</a>
+                        </p>
+                        <p class="arrival-review pull-right">
+                            <span class="lnr lnr-heart"></span>
+                            <span class="lnr lnr-frame-expand"></span>
+                        </p>
+                    </div>
+                </div>
+                <h4><a href="#">{{name}}</a></h4>
+                <p class="arrival-product-price">$ {{cost}}</p>
+            </div>
+        </div>
+        {{/each}}
 
         <div class="col-lg-3">
-           <form action="/admin/furniture/add" method="POST">
+            <form action="/admin/furniture/add" method="POST">
                 <h2 style="margin-top: 15px !important; margin-bottom: 15px !important">Mebel qo'shish</h2>
                 <div class=" mb-3">
                     <label for="name" class="form-label"> mebel nomi </label>
@@ -20,8 +48,8 @@
                         id="cost" placeholder=" ..... $ ">
                 </div>
                 <div class="form-check">
-                    <input name="isSale" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <input name="isSale" class="form-check-input" type="checkbox" value=true id="flexCheckDefault">
+                    <label class="form-check-label" value="true" for="flexCheckDefault">
                         is Sale?
                     </label>
                 </div>

@@ -48,10 +48,12 @@ router.get("/category/:id", auth, async (req, res, next) => {
 
 router.get("/furniture", auth, async (req, res, next) => {
   const category = await Category.find()
+  const furniture = await Furniture.find()
 
   res.render("admin/furniture", {
     title: "Furniture",
-    category
+    category,
+    furniture
   })
 })
 

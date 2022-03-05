@@ -13,7 +13,7 @@ const furnitureSchema = new Schema({
         required: true
     },
     isSale:{
-        type: String, 
+        type: Boolean, 
         required: false
     },
     des:{
