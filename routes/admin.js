@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const auth = require("../middleware/auth");
 const Category = require("../models/Category");
+const Furniture = require("../models/Furniture");
 
 /* GET users listing. */
 router.get("/", auth, function (req, res, next) {
@@ -19,12 +20,12 @@ router.get("/category", async function (req, res, next) {
   });
 });
 
-router.post("/category/add" , auth , async (req , res , next)=> {
-  const { name , img , des} = req.body
+router.post("/category/add", auth, async (req, res, next) => {
+  const { name, img, des } = req.body
   const category = new Category({
-      name,
-      img,
-      des
+    name,
+    img,
+    des
   })
 
   await category.save()
@@ -34,22 +35,47 @@ router.post("/category/add" , auth , async (req , res , next)=> {
 })
 
 
-router.get("/category/:id" , auth , async (req, res, next)=>{
+router.get("/category/:id", auth, async (req, res, next) => {
   const category = await Category.findById(req.params.id)
 
 
-  res.render("admin/categorySingle",{
+  res.render("admin/categorySingle", {
     title: category.name,
 
   })
 
 })
 
-router.get("/furniture" , auth , (req , res, next ) =>{
-  res.render("admin/furniture" , {
-    title : "Furniture",
-    
+router.get("/furniture", auth, async (req, res, next) => {
+  const category = await Category.find()
+
+  res.render("admin/furniture", {
+    title: "Furniture",
+    category
   })
 })
+
+
+router.post("/furniture/add", auth, async (req, res, next) => {
+  const { name,
+    img,
+    cost,
+    isSale,
+    des,
+    categoryId } = req.body
+  const furniture = new Furniture({
+    name,
+    img,
+    cost,
+    isSale,
+    des,
+    categoryId
+  })
+  console.log(furniture);
+
+  await furniture.save()
+  res.redirect("/admin/furniture")
+})
+
 
 module.exports = router;

@@ -2,53 +2,45 @@
     <div class="row justify-center">
 
         <div class="col-lg-3">
-            <form action="/admin/category/add" method="POST">
+           <form action="/admin/furniture/add" method="POST">
                 <h2 style="margin-top: 15px !important; margin-bottom: 15px !important">Mebel qo'shish</h2>
-
-
                 <div class=" mb-3">
                     <label for="name" class="form-label"> mebel nomi </label>
                     <input type="text" style="margin-bottom: 15px !important;" name="name" class="form-control"
                         id="name" placeholder="divan , kreslo">
                 </div>
-
                 <div class="mb-3 ">
                     <label for="img" class="form-label">Mebel rasmi </label>
                     <input type="text" style="margin-bottom: 15px !important;" name="img" class="form-control" id="img"
                         placeholder=" rasm url manzili">
                 </div>
-
                 <div class="mb-3 ">
                     <label for="des" class="form-label"> mebel narhi </label>
-                    <input type="text" style="margin-bottom: 15px !important;" name="des" class="form-control" id="des"
-                        placeholder=" kategoriya haqida ...">
+                    <input type="number" style="margin-bottom: 15px !important;" name="cost" class="form-control"
+                        id="cost" placeholder=" ..... $ ">
                 </div>
-
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <input name="isSale" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
-                        sale dami
+                        is Sale?
                     </label>
                 </div>
-
                 <div class="mb-3 ">
                     <label for="des" class="form-label"> mebel haqida </label>
                     <input type="text" style="margin-bottom: 15px !important;" name="des" class="form-control" id="des"
                         placeholder=" kategoriya haqida ...">
                 </div>
-
-                <select class="form-select" multiple aria-label="multiple select example">
-                    {{#each}}
-
-                    <option value="{{id}}">{{}}<option>
-
+                <select for="categoryId" placeholder="Furniture category" name="categoryId" class="form-select mb-3"
+                    aria-label="multiple select example">
+                    {{#if category.length}}
+                    {{#each category}}
+                    <option value="{{id}}">{{name}}</option>
                     {{/each}}
-                   
-                   
+                    {{else}}
+                    <option value="null">hech nima yo'q</option>
+                    {{/if}}
                 </select>
-
                 <button class="btn btn-primary" type="submit">Create category</button>
-
             </form>
         </div>
 

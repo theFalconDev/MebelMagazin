@@ -62,6 +62,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(sessionMiddleware)
 
+const Furniture = require("./models/Furniture");
+
+
+
+
+
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
 app.use('/auth', authRouter);
