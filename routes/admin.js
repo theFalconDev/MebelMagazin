@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const auth = require("../middleware/auth");
+const mongoose = require("mongoose")
 const Category = require("../models/Category");
 const Furniture = require("../models/Furniture");
 
@@ -36,12 +37,20 @@ router.post("/category/add", auth, async (req, res, next) => {
 
 
 router.get("/category/:id", auth, async (req, res, next) => {
+
+
   const category = await Category.findById(req.params.id)
+  const furniture = await Furniture.aggregate([
+    {$match:{
+        categoryId : mongoose.Types.ObjectId(req.params.id)
+    }}
+  ])
+
 
 
   res.render("admin/categorySingle", {
     title: category.name,
-
+    furniture
   })
 
 })
@@ -78,6 +87,7 @@ router.post("/furniture/add", auth, async (req, res, next) => {
   await furniture.save()
   res.redirect("/admin/furniture")
 })
+
 
 
 module.exports = router;

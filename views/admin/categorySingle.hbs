@@ -1,14 +1,19 @@
 <div class="container">
     <div class="row">
-    <h1>{{title}} 👍 </h1>
+
+    {{#if furniture.lenght}}
+    {{#each furniture}}
+        <h3>{{title}}</h3>
     <div class="col-md-3 col-sm-4">
         <div class="single-new-arrival">
             <div class="single-new-arrival-bg">
-                <img src="/images/collection/arrivals1.png" alt="new-arrivals images">
+                <img src="{{img}}" alt="new-arrivals images">
                 <div class="single-new-arrival-bg-overlay"></div>
+                {{#if isSale}}
                 <div class="sale bg-1">
                     <p>sale</p>
                 </div>
+                {{/if}}
                 <div class="new-arrival-cart">
                     <p>
                         <span class="lnr lnr-cart"></span>
@@ -20,10 +25,15 @@
                     </p>
                 </div>
             </div>
-            <h4><a href="#">wooden chair</a></h4>
-            <p class="arrival-product-price">$65.00</p>
+            <h4><a href="#">{{name}}</a></h4>
+            <p class="arrival-product-price">${{cost}}</p>
         </div>
     </div>
+    {{/each}}
+    {{else}}
+    <h3>afsus bu kategoriyadagi mahsulotimiz qolmagan</h3>
+    {{/if}}
+
 
     </div>
 </div>
