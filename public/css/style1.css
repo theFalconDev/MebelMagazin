@@ -17,4 +17,7 @@ nav.nav{
 input:focus {
   box-shadow: none;
 }
+section#clients{
+  overflow: hidden;
+}
 

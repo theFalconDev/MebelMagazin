@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const auth = require("../middleware/auth");
-const mongoose = require("mongoose")
 const Category = require("../models/Category");
 const Furniture = require("../models/Furniture");
+const mongoose = require("mongoose");
 
 /* GET users listing. */
 router.get("/", auth, function (req, res, next) {
@@ -45,8 +45,6 @@ router.get("/category/:id", auth, async (req, res, next) => {
         categoryId : mongoose.Types.ObjectId(req.params.id)
     }}
   ])
-
-
 
   res.render("admin/categorySingle", {
     title: category.name,

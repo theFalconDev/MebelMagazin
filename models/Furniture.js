@@ -22,7 +22,8 @@ const furnitureSchema = new Schema({
     },
     categoryId:{
         ref: "category",
-        type: Schema.Types.ObjectId
+        type: Schema.Types.ObjectId,
+        required:true
     }
 
 
